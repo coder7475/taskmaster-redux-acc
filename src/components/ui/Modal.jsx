@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
-export default function Modal({ isOpen, setIsOpen, title, content}) {
+export default function Modal({ isOpen, setIsOpen, title, children}) {
 
   function closeModal() {
     setIsOpen(false)
@@ -43,7 +43,7 @@ export default function Modal({ isOpen, setIsOpen, title, content}) {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      {content}
+                      {children}
                     </p>
                   </div>
 
