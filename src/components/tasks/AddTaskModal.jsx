@@ -1,6 +1,13 @@
+import { useForm } from 'react-hook-form';
 import Modal from './../ui/Modal';
 
 const AddTaskModal = ({ isOpen, setIsOpen}) => {
+    const { register, handleSubmit } = useForm();
+
+    const onSubmit = (data) => {
+        console.log(data);
+    }
+
     return (
         <Modal 
               isOpen={isOpen} 
@@ -8,9 +15,10 @@ const AddTaskModal = ({ isOpen, setIsOpen}) => {
               title={"Programming Hero"} 
               content={"lorem Ipsum so ao"}
         >
-            <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam fuga iusto reiciendis molestiae. Quibusdam ex obcaecati, neque veritatis sequi laborum, temporibus praesentium repudiandae error eius dicta quam quasi beatae iusto?
-            </p> 
+            <form onSubmit={() => handleSubmit(onSubmit)}>
+                <input type="text" name="name" {...register('name')} />
+                <button type='submit'></button>
+            </form>
         </Modal>
     );
 };
