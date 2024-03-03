@@ -15,9 +15,9 @@ const AddTaskModal = ({ isOpen, setIsOpen}) => {
               title={"Programming Hero"} 
               content={"lorem Ipsum so ao"}
         >
-            <form onSubmit={() => handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <input type="text" name="name" {...register('name')} />
-                <button type='submit'></button>
+                <button type='submit'>Submit</button>
             </form>
         </Modal>
     );
