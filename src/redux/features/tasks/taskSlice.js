@@ -14,6 +14,9 @@ const tasksSlice = createSlice({
         state.tasks.push({ id: lastId + 1, status: "pending", ...payload });
       }
     },
+    removeTask: (state, { payload } ) => {
+        state.tasks.filter(item => item.id !== payload)
+    }
   },
 });
 
