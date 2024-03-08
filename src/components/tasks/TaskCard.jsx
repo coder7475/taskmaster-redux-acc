@@ -25,7 +25,7 @@ const TaskCard = ({ task }) => {
             <TrashIcon className="h-5 w-5 text-red-500" />
           </button>
           <button            
-            onClick={() => dispatch(updateStatus(task.id))}
+            onClick={() => dispatch(updateStatus({ id: task.id, status: "running" }))}
             title="Update Status"
           >
             <ArrowRightIcon className="h-5 w-5 text-primary" />
