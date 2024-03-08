@@ -4,6 +4,14 @@ import { updateStatus } from '../../redux/features/tasks/taskSlice';
 
 const TaskCard = ({ task }) => {
   const dispatch = useDispatch();
+  let updatedStatus = "";
+
+  if (task.status === "pending")
+    updatedStatus = "running";
+  else if (task.status === "running")
+    updatedStatus = "done";
+  else
+    updatedStatus = "archive";
 
   return (
     <div className="bg-secondary/10 rounded-md p-5">
@@ -25,7 +33,7 @@ const TaskCard = ({ task }) => {
             <TrashIcon className="h-5 w-5 text-red-500" />
           </button>
           <button            
-            onClick={() => dispatch(updateStatus({ id: task.id, status: "running" }))}
+            onClick={() => dispatch(updateStatus({ id: task.id, status: updatedStatus }))}
             title="Update Status"
           >
             <ArrowRightIcon className="h-5 w-5 text-primary" />
