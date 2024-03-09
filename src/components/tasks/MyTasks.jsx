@@ -13,10 +13,13 @@ function Task({ item, dispatch }) {
         <button className="grid place-content-center" title="Details">
           <DocumentMagnifyingGlassIcon className="w-5 h-5 text-primary" />
         </button>
-        <button 
-          className="grid place-content-center" 
-          title="Done" 
-          onClick={() => dispatch(updateStatus( { id: item.id, status: "done"}))}>
+        <button
+          className="grid place-content-center"
+          title="Done"
+          onClick={() =>
+            dispatch(updateStatus({ id: item.id, status: "done" }))
+          }
+        >
           <CheckIcon className="w-5 h-5 text-primary" />
         </button>
       </div>
