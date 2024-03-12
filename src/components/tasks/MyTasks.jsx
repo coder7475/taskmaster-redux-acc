@@ -3,7 +3,8 @@ import {
   DocumentMagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import { useDispatch, useSelector } from "react-redux";
-import { updateStatus } from "../../redux/features/tasks/taskSlice";
+import { updateStatus, userTasks } from "../../redux/features/tasks/taskSlice";
+import { useEffect } from "react";
 
 function Task({ item, dispatch }) {
   return (
@@ -29,7 +30,13 @@ function Task({ item, dispatch }) {
 
 const MyTasks = () => {
   const { tasks } = useSelector((state) => state.tasksSlice);
+  const { name } = useSelector((state) => state.userSlice);
   const dispatch = useDispatch();
+
+  console.log(name);
+  useEffect(() => {
+    dispatch(userTasks(name))
+  }, [name, dispatch]);
 
   return (
     <div>
