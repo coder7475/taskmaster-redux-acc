@@ -15,7 +15,7 @@ const tasksSlice = createSlice({
         priority: "high",
       },
     ],
-    userTasks: [],
+    userSpecificTasks: [],
   },
   reducers: {
     addTask: (state, { payload }) => {
@@ -34,7 +34,7 @@ const tasksSlice = createSlice({
       currentTask.status = payload.status;
     },
     userTasks: (state, { payload }) => {
-      state.userTasks = state.tasks.filter(item => item.assignedTo === payload);
+      state.userSpecificTasks = state.tasks.filter(item => item.assignedTo === payload);
     },
   },
 });

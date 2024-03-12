@@ -29,20 +29,21 @@ function Task({ item, dispatch }) {
 }
 
 const MyTasks = () => {
-  const { tasks } = useSelector((state) => state.tasksSlice);
+  const { tasks, userSpecificTasks } = useSelector((state) => state.tasksSlice);
   const { name } = useSelector((state) => state.userSlice);
   const dispatch = useDispatch();
 
+  console.log(userSpecificTasks);
   console.log(name);
   useEffect(() => {
     dispatch(userTasks(name))
-  }, [name, dispatch]);
+  }, [name, dispatch, tasks]);
 
   return (
     <div>
       <h1 className="text-xl my-3">My Tasks</h1>
       <div className=" h-[750px] overflow-auto space-y-3">
-        {tasks.map((item) => (
+        {userSpecificTasks.map((item) => (
           <Task key={item.id} item={item} dispatch={dispatch}></Task>
         ))}
       </div>
