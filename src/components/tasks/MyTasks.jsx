@@ -7,7 +7,7 @@ import { updateStatus, userTasks } from "../../redux/features/tasks/taskSlice";
 import { useEffect, useState } from "react";
 import TaskDetails from "./TaskDetails";
 
-function Task({ item, dispatch, isOpen, setIsOpen, taskId, setTaskId }) {
+function Task({ item, dispatch, handleModal }) {
   return (
     <div className="bg-secondary/10 rounded-md p-3 flex justify-between">
       <h1>{item.title}</h1>
@@ -41,13 +41,18 @@ const MyTasks = () => {
     dispatch(userTasks(name));
   }, [name, dispatch, tasks]);
 
+  const handleModal = (id) => {
+    setTaskId(id);
+    setIsOpen(!isOpen);
+  }
+
   return (
     <div>
       <TaskDetails isOpen={isOpen} setIsOpen={setIsOpen} id={taskId}></TaskDetails>
       <h1 className="text-xl my-3">My Tasks</h1>
       <div className=" h-[750px] overflow-auto space-y-3">
         {userSpecificTasks.map((item) => (
-          <Task key={item.id} item={item} dispatch={dispatch} setIsOpen={setIsOpen} isOpen={isOpen} taskId={taskId} setTaskId={setTaskId}></Task>
+          <Task key={item.id} item={item} dispatch={dispatch} isOpen={isOpen} taskId={taskId} handleModal={handleModal}></Task>
         ))}
       </div>
     </div>
