@@ -4,7 +4,8 @@ import {
 } from "@heroicons/react/24/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { updateStatus, userTasks } from "../../redux/features/tasks/taskSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import TaskDetails from "./TaskDetails";
 
 function Task({ item, dispatch }) {
   return (
@@ -32,7 +33,7 @@ const MyTasks = () => {
   const { tasks, userSpecificTasks } = useSelector((state) => state.tasksSlice);
   const { name } = useSelector((state) => state.userSlice);
   const dispatch = useDispatch();
-
+  const [isOpen, setIsOpen] = useState(false);
   // console.log(userSpecificTasks);
   // console.log(name);
   useEffect(() => {
@@ -41,6 +42,7 @@ const MyTasks = () => {
 
   return (
     <div>
+      <TaskDetails isOpen={isOpen} setIsOpen={setIsOpen}></TaskDetails>
       <h1 className="text-xl my-3">My Tasks</h1>
       <div className=" h-[750px] overflow-auto space-y-3">
         {userSpecificTasks.map((item) => (
