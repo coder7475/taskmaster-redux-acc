@@ -33,10 +33,10 @@ const MyTasks = () => {
   const { name } = useSelector((state) => state.userSlice);
   const dispatch = useDispatch();
 
-  console.log(userSpecificTasks);
-  console.log(name);
+  // console.log(userSpecificTasks);
+  // console.log(name);
   useEffect(() => {
-    dispatch(userTasks(name))
+    dispatch(userTasks(name));
   }, [name, dispatch, tasks]);
 
   return (
